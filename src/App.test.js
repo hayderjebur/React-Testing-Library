@@ -37,7 +37,7 @@ test('button disable after check the checkbox', () => {
   expect(button).toBeEnabled();
 });
 
-test('the button is gray after disable it', () => {
+test('the button is gray after disable it ', () => {
   render(<App />);
 
   const button = screen.getByRole('button', { name: 'Change to blue' });
