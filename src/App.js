@@ -9,12 +9,13 @@ function App() {
     <div className='App'>
       <button
         onClick={() => setColor(newButtonColor)}
-        style={{ backgroundColor: color }}
+        style={{ backgroundColor: status ? 'gray' : color }}
         disabled={status}
       >
         Change to {newButtonColor}
       </button>
-      <input type='checkbox' onClick={() => setStatus(!status)} />
+      <input type='checkbox' onClick={() => setStatus(!status)} id='disable' />
+      <label htmlFor='disable'>Disable button</label>
     </div>
   );
 }
