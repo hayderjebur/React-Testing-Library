@@ -1,4 +1,5 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import App from './App';
 
 test('button has correct initial color and text', () => {
@@ -7,7 +8,7 @@ test('button has correct initial color and text', () => {
 
   expect(colorButton).toHaveStyle({ backgroundColor: 'red' });
   //click button
-  fireEvent.click(colorButton);
+  userEvent.click(colorButton);
   //expect the color change to blue
   expect(colorButton).toHaveStyle({ backgroundColor: 'blue' });
 
@@ -30,10 +31,10 @@ test('button disable after check the checkbox', () => {
   const checkbox = screen.getByRole('checkbox', { name: 'Disable button' });
   const button = screen.getByRole('button', { name: 'Change to blue' });
 
-  fireEvent.click(checkbox);
+  userEvent.click(checkbox);
   expect(button).toBeDisabled();
 
-  fireEvent.click(checkbox);
+  userEvent.click(checkbox);
   expect(button).toBeEnabled();
 });
 
@@ -43,12 +44,12 @@ test('the button is gray after disable it ', () => {
   const button = screen.getByRole('button', { name: 'Change to blue' });
   const checkbox = screen.getByRole('checkbox');
 
-  fireEvent.click(checkbox);
+  userEvent.click(checkbox);
   expect(button).toHaveStyle({ backgroundColor: 'gray' });
 
-  fireEvent.click(checkbox);
+  userEvent.click(checkbox);
   expect(button).toHaveStyle({ backgroundColor: 'red' });
 
-  fireEvent.click(button);
+  userEvent.click(button);
   expect(button).toHaveStyle({ backgroundColor: 'blue' });
 });
